@@ -9,7 +9,7 @@ import Coursefilter from './pages/Coursefilter/Coursefilter';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Coursedisplay from './components/Coursedisplay/Coursedisplay';
-import Lesson from './pages/Coursefilter/Courseview/lesson/Lesson';
+// import Lesson from './pages/Coursefilter/Courseview/lesson/Lesson';
 import Video from './components/video/Video';
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import Cart from './pages/Cart/Cart';
@@ -57,8 +57,8 @@ const App = () => {
           <Route path='/courses/viewcourse/ai' element={<CoursedAI />} />
           <Route path='/courses/viewcourse/sw' element={<CoursedSW />} />
           <Route path='/courses/viewcourse/design' element={<CoursedDesign />} />
-          <Route path='/courses/viewcourse/lesson/:id' element={<Lesson />} />
-          <Route path='/courses/viewcourse/lesson/video/:id' element={<Video />} />
+{/*           <Route path='/courses/viewcourse/lesson/:id' element={<Lesson />} /> */}
+{/*           <Route path='/courses/viewcourse/lesson/video/:id' element={<Video />} /> */}
           <Route path="*" element={<Error />} />
         </Routes>
       <Footer /> 
