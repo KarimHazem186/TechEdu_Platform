@@ -120,6 +120,7 @@ const CoursedAI = (category) => {
                 alert('User Invalid');
             } else {
                 history('/courses/viewcourse/favourite');
+                // setAccountFav(data1);
             }
         } catch (error) {
             console.error('Error adding to favorites:', error);
@@ -138,6 +139,8 @@ const CoursedAI = (category) => {
             credentials:"include"
         });
         const data = await res.json()
+        // console.log("validuserdata",data.favouriates)
+        // console.log("validuserdata",data)
 
         if(res.status !==201) {
             console.log("error")
@@ -145,6 +148,7 @@ const CoursedAI = (category) => {
             console.log("data valid");
             setAccountCart(data.carts)
             setAccountFav(data.favouriates)
+            // setname(data.fname)
         }
     }
 

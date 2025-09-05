@@ -10,8 +10,10 @@ const CoursedDesign = (category) => {
     const history = useNavigate("")
 
 
+    // const { Lesson } = useContext(StoreContext);
     const {courses} = useSelector(state=>state.getCoursesdata)
     console.log(courses)
+    // console.log(courses[0].cname)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getAllCourses())
@@ -40,6 +42,8 @@ const CoursedDesign = (category) => {
                 }
     
                 const cartData = await cartResponse.json();
+                // console.log("cartData",cartData)
+                // setAccountCart(cartData);
                 setFname(cartData.user.fname)
                 
             } catch (error) {
@@ -82,6 +86,7 @@ const CoursedDesign = (category) => {
                 alert('User Invalid');
             } else {
                 history('/courses/viewcourse/cart');
+                // setAccountCart(data1);
             }
         } catch (error) {
             console.error('Error adding to cart:', error);
@@ -118,6 +123,7 @@ const CoursedDesign = (category) => {
                 alert('User Invalid');
             } else {
                 history('/courses/viewcourse/favourite');
+                // setAccountFav(data1);
             }
         } catch (error) {
             console.error('Error adding to favorites:', error);
@@ -135,6 +141,8 @@ const CoursedDesign = (category) => {
             credentials:"include"
         });
         const data = await res.json()
+        // console.log("validuserdata",data.favouriates)
+        // console.log("validuserdata",data)
 
         if(res.status !==201) {
             console.log("error")
@@ -142,6 +150,7 @@ const CoursedDesign = (category) => {
             console.log("data valid");
             setAccountCart(data.carts)
             setAccountFav(data.favouriates)
+            // setname(data.fname)
         }
     }
 

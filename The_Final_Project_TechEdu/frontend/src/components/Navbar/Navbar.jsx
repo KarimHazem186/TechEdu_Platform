@@ -39,6 +39,8 @@ const Navbar = () => {
     const {accountCart,setAccountCart} = useContext(LoginContext)
     console.log("accountCart",accountCart) 
     const {accountFav,setAccountFav} = useContext(LoginContext) 
+    // console.log("accountFav",accountFav)
+    const {fname,setFname} = useContext(LoginContext)
     const [name,setname] = useState("")
     
     const [text,setText] = useState("")
@@ -51,7 +53,9 @@ const Navbar = () => {
     },[dispatch])
     const [liopen,setliopen] = useState(true)
     
+    // const [open,setOpen] = useState(false)
 
+    // const [dropen, setDropen] = useState(false);
 
 
     const getdetailsvaliduser =async()=>{
@@ -64,6 +68,8 @@ const Navbar = () => {
             credentials:"include"
         });
         const data = await res.json()
+        // console.log("validuserdata",data.favouriates)
+        // console.log("validuserdata",data)
 
         if(res.status !==201) {
             console.log("error")
@@ -79,6 +85,18 @@ const Navbar = () => {
     useEffect(()=>{
         getdetailsvaliduser()
     },[])
+
+
+
+    // console.log(accountCart.user.fname)
+
+    // console.log(fname[0].toUpperCase())
+    // const send = ()=>{
+    //     if(accountCart) {
+    //         history("/")
+    //     }
+    // }
+
 
     const logoutuser =async()=>{
         const res2 = await fetch("http://localhost:7200/logout",{
@@ -96,6 +114,7 @@ const Navbar = () => {
             console.log("error")
         } else {
             console.log("Lougout user");
+            // alert("User Logout Successfully")
             toast.success("User Logout Successfully",{
                 position:"top-center"
             })
@@ -127,6 +146,7 @@ const Navbar = () => {
                         onChange={(e)=>getText(e.target.value)}
                     />
                     <button className='search-btn'><img src={assets.search_icon} alt="Search" /></button>
+                    {/* Search Filter */}
                     <>
                     {
                         text && 
@@ -145,6 +165,7 @@ const Navbar = () => {
                     </>
                 </div>
                 <button className='btn'><Link to="/login">Login</Link></button>
+                {/* <button className='btn'><Link to="/signup">Sign Up</Link></button> */}
 
             </div>
             <div className="navbar-right">
@@ -180,6 +201,7 @@ const Navbar = () => {
                 'aria-labelledby': 'basic-button',
                 }}
             >
+                {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 {
                     name ?
@@ -201,6 +223,8 @@ const Navbar = () => {
                        accountFav.length ? <Link to="/courses/viewcourse/favourite">
                        <img src={assets.favourite_icon} alt="fav" />
                        <div className="dot-fav">
+                            {/* {accountFav && accountFav.favouriates ? accountFav.favouriates.length : 0} */}
+                            {/* { accountCart.favourites.length} */}
                             {accountFav ?accountFav.length : 0}
 
                         </div>
@@ -216,6 +240,8 @@ const Navbar = () => {
                         accountCart.length ? <Link to="/courses/viewcourse/cart">
                         <img src={assets.shopping_card} alt="cart" />
                         <div className="dot-cart">
+                            {/* {accountCart && accountCart.carts ? accountCart.carts.length : 0} */}
+                            {/* { accountCart.carts.length} */}
                             {accountCart ? accountCart.length : 0}
                             </div>
                         </Link> : <Link to="/login">
@@ -223,6 +249,11 @@ const Navbar = () => {
                             <div className="dot-cart">{""}</div>
                         </Link>     
                     }
+                    
+
+                    {/* {
+                    <div className="dot-cart">{accountCart && accountCart.carts ? accountCart.carts.length : 0}</div>
+                    } */}
                     
                 </div>
                 <div className='icon' onClick={toggleMobileMenu}>

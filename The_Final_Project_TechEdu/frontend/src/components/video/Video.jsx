@@ -4,15 +4,18 @@ import { assets } from '../../assets/assets';
 import { useParams } from 'react-router-dom';
 const Video = () => {
     const handlePrevious = () => {
+        // Logic for previous video
         console.log('Previous video');
     };
 
     const handleNext = () => {
+        // Logic for next video
         console.log('Next video');
     };
 
 
     const {id}=useParams()
+    // console.log(id)
     const [content,setContent] = useState([])
    console.log(content)
 
@@ -24,6 +27,7 @@ const Video = () => {
             }
         });
         const data = await res.json()
+        // console.log(data)
         if(res.status !=201) {
             console.log("no data available")
         } else {

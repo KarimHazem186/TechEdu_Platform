@@ -7,6 +7,7 @@ export const getAllCourses = () => async (dispatch) => {
             }
         });
         const res =await data.json();
+        // console.log(res);
         dispatch({type:"SUCCESS_GET_Courses",payload:res})
 
     } catch (error) {

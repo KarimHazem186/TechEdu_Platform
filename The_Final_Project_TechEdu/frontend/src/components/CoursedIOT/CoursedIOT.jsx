@@ -9,8 +9,10 @@ import { LoginContext } from '../../context/ContextProvider';
 const CoursedIOT = (category) => {
     const history = useNavigate("")
 
+    // const { Lesson } = useContext(StoreContext);
     const {courses} = useSelector(state=>state.getCoursesdata)
     console.log(courses)
+    // console.log(courses[0].cname)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getAllCourses())
@@ -39,6 +41,8 @@ const CoursedIOT = (category) => {
                 }
     
                 const cartData = await cartResponse.json();
+                // console.log("cartData",cartData)
+                // setAccountCart(cartData);
                 setFname(cartData.user.fname)
                 
             } catch (error) {
@@ -50,6 +54,7 @@ const CoursedIOT = (category) => {
         fetchData();
     }, [setAccountCart, setAccountFav]);
     
+    // Add to cart function
     const addtocart = async (id) => {
         console.log(id);
         const course = courses.find(course => course._id === id);
@@ -80,6 +85,7 @@ const CoursedIOT = (category) => {
                 alert('User Invalid');
             } else {
                 history('/courses/viewcourse/cart');
+                // setAccountCart(data1);
             }
         } catch (error) {
             console.error('Error adding to cart:', error);
@@ -87,6 +93,7 @@ const CoursedIOT = (category) => {
         }
     };
 
+    // Add to favorites function
     const addtofav = async (id) => {
         const course = courses.find(course => course._id === id);
         if (!course) {
@@ -115,6 +122,7 @@ const CoursedIOT = (category) => {
                 alert('User Invalid');
             } else {
                 history('/courses/viewcourse/favourite');
+                // setAccountFav(data1);
             }
         } catch (error) {
             console.error('Error adding to favorites:', error);
@@ -132,6 +140,8 @@ const CoursedIOT = (category) => {
             credentials:"include"
         });
         const data = await res.json()
+        // console.log("validuserdata",data.favouriates)
+        // console.log("validuserdata",data)
 
         if(res.status !==201) {
             console.log("error")
@@ -139,6 +149,7 @@ const CoursedIOT = (category) => {
             console.log("data valid");
             setAccountCart(data.carts)
             setAccountFav(data.favouriates)
+            // setname(data.fname)
         }
     }
 
