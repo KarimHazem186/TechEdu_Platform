@@ -9,7 +9,7 @@ import Coursefilter from './pages/Coursefilter/Coursefilter';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Coursedisplay from './components/Coursedisplay/Coursedisplay';
-import Lesson from './pages/Coursefilter/Courseview/lesson/Lesson';
+import Lesson from './pages/Coursefilter/Courseview/lesson/Lesson.js';
 import Video from './components/video/Video';
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import Cart from './pages/Cart/Cart';
