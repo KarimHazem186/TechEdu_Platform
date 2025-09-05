@@ -1,15 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './CourseFav.css'
 import { StoreContext } from '../../context/StoreContext';
+import { getAllCourses } from '../../components/redux/actions/action';
+import { useDispatch, useSelector } from 'react-redux';
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../../context/ContextProvider';
 
 const CourseFav = () => {
+    const { cart } = useContext(StoreContext);
 
     const[favdata,setFavdata] = useState("")
-    
+    // console.log("favdata",favdata)
+
+    // const handleRemove = () => {
+    //     console.log('Remove')
+    // }
+    // const AddtoCard = () => {
+    //     console.log('added to card Successfully')
+    // }
+
     const getdatafav = async()=>{
         const res = await fetch("http://localhost:7200/courses/viewcourse/fav/favdetails",{
           method: 'GET',
@@ -24,6 +35,7 @@ const CourseFav = () => {
           console.log("error")
         } else {
             setFavdata(data.favouriates)
+            // setAccountCart(data.favouriates)
         }
       };
     
@@ -31,6 +43,7 @@ const CourseFav = () => {
         getdatafav();
       },[favdata])
 
+////////////////////////////////
     const history = useNavigate("")
     const { accountCart, setAccountCart, accountFav, setAccountFav,fname,setFname } = useContext(LoginContext);
     console.log("fname",fname)
@@ -38,6 +51,7 @@ const CourseFav = () => {
     console.log("accountFav",accountFav)
 
     
+// Add to cart function
     const addtocart = async (id) => {
         console.log(id);
         const course = favdata.find(course => course._id === id);
@@ -69,6 +83,8 @@ const CourseFav = () => {
                 alert('User Invalid');
             } else {
                 history('/courses/viewcourse/cart');
+                // setAccountCart(data1.carts);
+                // setAccountFav(data1.carts);
             }
         } catch (error) {
             console.error('Error adding to cart:', error);
@@ -76,7 +92,7 @@ const CourseFav = () => {
         }
     };
 
-      
+      //////////////////////////////////
 
       const handleRemove = async(id)=>{
         try {
@@ -94,6 +110,9 @@ const CourseFav = () => {
             console.log("error")
           } else {
             console.log("user delete course successfully")
+            // setAccountCart(data.carts)
+            // setAccountCart(data.favouriates)
+            // setAccountFav(data)
             toast.success("Course delete Successfully",{
                 position:"top-center"
               })
@@ -115,6 +134,8 @@ const CourseFav = () => {
             credentials:"include"
         });
         const data = await res.json()
+        // console.log("validuserdata",data.favouriates)
+        // console.log("validuserdata",data)
 
         if(res.status !==201) {
             console.log("error")
@@ -122,6 +143,7 @@ const CourseFav = () => {
             console.log("data valid");
             setAccountCart(data.carts)
             setAccountFav(data.favouriates)
+            // setname(data.fname)
         }
     }
 

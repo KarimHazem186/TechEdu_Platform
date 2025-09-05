@@ -10,6 +10,11 @@ const Cart = () => {
   const { cart } = useContext(StoreContext);
 
   const [cartdata,setCartdata] = useState("")
+  // console.log("cartdata",cartdata)
+
+  // const handleRemove = () => {
+  //   console.log('Remove')
+  // }
   const handleCheckout = () => {
     alert('You Are Pay')
     console.log('You Are Pay')
@@ -74,6 +79,9 @@ const Cart = () => {
         console.log("error")
       } else {
         console.log("user delete course successfully")
+        // setAccountCart(data)
+        // setAccountCart(data.carts)
+        // setAccountFav(data)
         toast.success("Course delete Successfully",{
           position:"top-center"
         })
@@ -94,6 +102,8 @@ const Cart = () => {
         credentials:"include"
     });
     const data = await res.json()
+    // console.log("validuserdata",data.favouriates)
+    // console.log("validuserdata",data)
 
     if(res.status !==201) {
         console.log("error")
@@ -101,6 +111,7 @@ const Cart = () => {
         console.log("data valid");
         setAccountCart(data.carts)
         setAccountFav(data.favouriates)
+        // setname(data.fname)
     }
 }
 

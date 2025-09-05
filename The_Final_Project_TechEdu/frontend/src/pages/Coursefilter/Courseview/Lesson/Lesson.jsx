@@ -16,6 +16,7 @@ const Lesson = () => {
             }
         });
         const data = await res.json()
+        // console.log(data)
         if(res.status !=201) {
             console.log("no data available")
         } else {
@@ -30,6 +31,14 @@ const Lesson = () => {
         },2000)
     },[id])
 
+    /*
+    {
+                content ?  <div className='circle'> 
+                <CircularProgress />
+                <h2>Loading...</h2>
+              </div> : ""
+            }
+    */
     return (
         <>
             
@@ -47,6 +56,11 @@ const Lesson = () => {
                     </p>
                     <h2>Course Content</h2>
                     <ul>
+                        {/* <li>learn HTML</li>
+                        <li>learn CSS</li>
+                        <li>learn HTML5</li>
+                        <li>learn CSS3</li>
+                        <li>Project With HTML and Css</li> */}
                        <li> {content.content} </li>
                     </ul>
                     <a href="#" style={{marginTop:"20px"}}><Link style={{marginTop:"20px"}} to={`/courses/viewcourse/lesson/video/${id}`}>Watch Video</Link></a>

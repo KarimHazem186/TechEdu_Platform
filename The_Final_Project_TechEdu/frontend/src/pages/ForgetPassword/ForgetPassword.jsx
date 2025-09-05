@@ -92,7 +92,9 @@ const ForgetPassword = () => {
             <div className="right-content">
                 <h2 className="form-title"><span>*</span>Enter Your NEW Password</h2>
                 <form action="#" className='login-form'>
+                    {/* {message ? <p style={{ color: "green", fontWeight: "bold", justifyContent: "center", display: "flex" }}>Password Successfully Updated</p> : ""} */}
                     <div className="input-wrapper">
+                        {/* <label htmlFor='password'>NEW Password</label> */}
                         <input type="password" placeholder='Enter Your New Password' className='input-field' onChange={setval} id='password' value={password} required />
                     </div>
                     <button className="login-button" onClick={sendPassword} disabled={loading}>

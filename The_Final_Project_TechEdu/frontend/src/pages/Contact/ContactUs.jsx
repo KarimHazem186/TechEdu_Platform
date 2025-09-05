@@ -14,8 +14,10 @@ const ContactUs = () => {
         message:""
       });
     
+      // console.log(inputValue)
     
       const handleChange = (e) => {
+        // console.log(e.target.value)
         const {name,value} = e.target;
         setInputValue(()=>{
           return {  

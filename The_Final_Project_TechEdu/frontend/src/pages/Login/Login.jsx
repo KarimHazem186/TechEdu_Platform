@@ -13,7 +13,7 @@ const Login = () => {
     })
     console.log(logindata)
 
-    const {setAccountCart} = useContext(LoginContext)
+    const {accountCart,setAccountCart} = useContext(LoginContext)
 
     const [home,setHome] = useState(false) 
 
@@ -53,7 +53,14 @@ const Login = () => {
         const data = await res.json();
         console.log("login",data)
         if(res.status === 201) {
+            // alert("Login done successfully")
             setAccountCart(data)
+            // toast.success("Login done successfully😃!",{
+            //     position:"top-center"
+            // })
+            // alert("Login done successfully")
+            // history("/")
+            // window.location.reload()
             setHome(true)
             toast.success("Login done successfully😃!",{
                 position:"top-center"
@@ -69,6 +76,22 @@ const Login = () => {
         }
         
 
+        
+        // if(res.status===400 || !data){
+        //     // alert("no data")
+        //     // toast.warn("Invalid Details👎!",{
+        //         // position:"top-center"
+        //     // })
+        // } else {
+            //// alert("Login done successfully")
+        //     toast.success("Login done successfully😃!",{
+        //         position:"top-center"
+        //     })
+        //     setLogindata({
+        //         ...logindata,
+        //         email:"",password:""
+        //     })
+        // }
     }
 
     setTimeout(()=>{
@@ -103,6 +126,7 @@ const Login = () => {
                         value={logindata.email}
                         placeholder='Email' 
                         className='input-field' 
+                        // required 
                         onChange={handleChange} 
                         />
                         <i className="bi bi-envelope"></i>
@@ -113,6 +137,7 @@ const Login = () => {
                          value={logindata.password}
                          placeholder='Password'
                           className='input-field'
+                          //   required 
                           onChange={handleChange} 
                           />
 

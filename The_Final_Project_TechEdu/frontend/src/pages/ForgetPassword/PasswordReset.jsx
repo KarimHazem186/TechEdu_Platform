@@ -48,8 +48,10 @@ const PasswordReset = () => {
             <div className="right-content">
                 <h2 className="form-title"><span>*</span> Enter Email </h2>
                 <form action="#" className='login-form'>
+                {/* {message ? <p style={{color:"green",fontWeight:"bold",justifyContent:"center",display:"flex"}}>Password reset link send Successfully in Your Email</p> :""} */}
 
                     <div className="input-wrapper">
+                    {/* <label htmlFor='email'>Email</label> */}
                         <input type="email" placeholder='Email' value={email} id='password' className='input-field' onChange={setVal} />
                         <i className="bi bi-envelope"></i>
                     </div>

@@ -66,11 +66,14 @@ const Signup = () => {
             })
         });
         const data = await res.json();
+        // console.log(data)
         if(res.status===422 || !data){
-            toast.warn("Invalid Details👎!",{
-                position:"top-center"
-            })
+            // alert("no data")
+            // toast.warn("Invalid Details👎!",{
+            //     position:"top-center"
+            // })
         } else {
+            // alert("Registration done successfully")
             setlogin(true);
             toast.success("Registration done successfully😃!",{
                 position:"top-center"
@@ -113,6 +116,7 @@ const Signup = () => {
                              value={registerdata.fname}
                               placeholder="Your Name" 
                               className="input-field" 
+                            //   required 
                             onChange={handleChange}
                               />
                             <i className="bi bi-person-circle"></i>
@@ -123,6 +127,7 @@ const Signup = () => {
                             value={registerdata.email}
                             placeholder="Email" 
                             className="input-field" 
+                            // required 
                             onChange={handleChange}
                             />
                             <i className="bi bi-envelope"></i>
@@ -133,6 +138,7 @@ const Signup = () => {
                             value={registerdata.mobile} 
                             placeholder="Phone Number"
                              className="input-field" 
+                            //  required 
                             onChange={handleChange}
                              />
                         </div>
@@ -142,6 +148,7 @@ const Signup = () => {
                             value={registerdata.password}
                             placeholder="Password"
                             className="input-field" 
+                            //   required
                             onChange={handleChange} 
                               />
                             <i className="bi bi-email"></i>
@@ -152,6 +159,7 @@ const Signup = () => {
                             value={registerdata.cpassword}
                             placeholder="Confirmpassord" 
                             className="input-field" 
+                            // required 
                             onChange={handleChange}
                             />
                             <i className="bi bi-email"></i>
