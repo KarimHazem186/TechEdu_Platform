@@ -22,6 +22,7 @@ import CoursedDesign from './components/CoursedDesign/CoursedDesign';
 import CircularProgress from '@mui/material/CircularProgress';
 import Error from './Error';
 import PasswordReset from './pages/ForgetPassword/PasswordReset';
+import ContactUs from './pages/Contact/ContactUs';
 
 const App = () => {
 
@@ -43,6 +44,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          {/* <Route path='/contactus' element={<ContactUs />} /> */}
           <Route path='/courses' element={<Coursefilter />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
